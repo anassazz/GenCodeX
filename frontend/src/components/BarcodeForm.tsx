@@ -2,6 +2,13 @@ import React, { useState } from 'react';
 import { ScanBarcode as BarcodeScan, QrCode, AlertCircle } from 'lucide-react';
 
 
+type BarcodeType = '1D' | '2D';
+
+interface BarcodeFormProps {
+  onGenerateBarcode: (text: string, type: BarcodeType) => void;
+  error: string | null;
+}
+
 const BarcodeForm: React.FC<BarcodeFormProps> = ({ onGenerateBarcode, error }) => {
   const [text, setText] = useState<string>('');
   const [isInputFocused, setIsInputFocused] = useState<boolean>(false);
